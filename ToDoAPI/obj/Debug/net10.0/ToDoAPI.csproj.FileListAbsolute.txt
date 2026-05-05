@@ -148,3 +148,6 @@ C:\Users\emili\Desktop\SmallerProjects\ToDoAPI\ToDoAPI\obj\Debug\net10.0\refint\
 C:\Users\emili\Desktop\SmallerProjects\ToDoAPI\ToDoAPI\obj\Debug\net10.0\ToDoAPI.pdb
 C:\Users\emili\Desktop\SmallerProjects\ToDoAPI\ToDoAPI\obj\Debug\net10.0\ToDoAPI.genruntimeconfig.cache
 C:\Users\emili\Desktop\SmallerProjects\ToDoAPI\ToDoAPI\obj\Debug\net10.0\ref\ToDoAPI.dll
+C:\Users\emili\Desktop\SmallerProjects\ToDoAPI\ToDoAPI\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\emili\Desktop\SmallerProjects\ToDoAPI\ToDoAPI\obj\Debug\net10.0\ToDoAPI.sourcelink.json
+C:\Users\emili\Desktop\SmallerProjects\ToDoAPI\ToDoAPI\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
