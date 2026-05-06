@@ -1,5 +1,5 @@
 ﻿using System.Net.WebSockets;
-using ToDoAPI.DTOs;
+using ToDoAPI.DTOs.ItemDTO;
 using ToDoAPI.DTOS;
 using ToDoAPI.Models;
 using ToDoAPI.Repositories.Interfaces;
@@ -52,9 +52,6 @@ namespace ToDoAPI.Services.Implementations
             await _repository.DeleteAsync(id);
         }
 
-
-
-
         public async Task UpdateAsync(int id, UpdateTDItemDTO dto)
         {
             var item = await _repository.GetByIdAsync(id);
@@ -63,6 +60,17 @@ namespace ToDoAPI.Services.Implementations
             item.IsFinished = dto.IsFinished;
 
             await _repository.UpdateAsync(item);
+        }
+
+        public async Task<List<ToDoItemDTO>> GetUsersItems(int userId)
+        {
+           var items= await _repository.GetUserItems(userId);
+           return items.Select(p => new ToDoItemDTO
+            {
+                UserId = p.UserId,
+                Description = p.Description,
+                IsFinished = p.IsFinished
+            }).ToList();
         }
     }
 }

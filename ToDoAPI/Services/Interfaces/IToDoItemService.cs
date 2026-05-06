@@ -1,4 +1,4 @@
-﻿using ToDoAPI.DTOs;
+﻿using ToDoAPI.DTOs.ItemDTO;
 using ToDoAPI.Repositories.Implementations;
 
 namespace ToDoAPI.DTOS
@@ -10,6 +10,8 @@ namespace ToDoAPI.DTOS
         Task CreateAsync(ToDoItemDTO dto);
         Task UpdateAsync(int id, UpdateTDItemDTO dto);
         Task DeleteAsync(int id);
+
+        Task<List<ToDoItemDTO>> GetUsersItems(int userId);
 
     }
 }

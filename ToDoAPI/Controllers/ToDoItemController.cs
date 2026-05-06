@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ToDoAPI.DTOs;
+using ToDoAPI.DTOs.ItemDTO;
 using ToDoAPI.DTOS;
 
 namespace ToDoAPI.Controllers
@@ -49,6 +49,13 @@ namespace ToDoAPI.Controllers
         {
             await _service.DeleteAsync(id);
             return Ok();
+        }
+
+        [HttpGet("users/{userId}")]
+        public async Task<IActionResult> GetUserItems(int userId)
+        {
+            var items = await _service.GetUsersItems(userId);
+            return Ok(items);
         }
     }
 

@@ -17,8 +17,8 @@ namespace ToDoAPI.Repositories.Implementations
             _dbSet = context.Set<ToDoItem>();
         }
 
-        public async Task<IEnumerable<ToDoItem>> GetAllAsync() => await _dbSet.ToListAsync();
-        public async Task<ToDoItem> GetByIdAsync(int id) => await _dbSet.FindAsync(id);
+        public async Task<IEnumerable<ToDoItem>> GetAllAsync() {return await _dbSet.ToListAsync();}
+        public async Task<ToDoItem> GetByIdAsync(int id) { return await _dbSet.FindAsync(id); }
 
         public async Task AddAsync(ToDoItem item)
         {
@@ -41,6 +41,9 @@ namespace ToDoAPI.Repositories.Implementations
                 await _context.SaveChangesAsync();
             }
         }
-
+        public async Task<IEnumerable<ToDoItem>> GetUserItems(int userID)
+        {
+            return await _dbSet.Where(i => i.UserId == userID).ToListAsync();
+        }
     }
 }

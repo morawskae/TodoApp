@@ -3,8 +3,9 @@
     public class User
     {
         public int Id { get; set; }
-        public required string Username { get; set; }
-        public required string PasswordHash { get; set; }
+        public string Username { get; set; }
+        public string PasswordHash { get; set; }
+        public DateTime CreationDate { get; set; }
 
         public User() { }
 
@@ -12,6 +13,7 @@
         {
             this.Username = username;
             this.PasswordHash = passwordHash;
+            this.CreationDate = DateTime.Now;
         }
        
     }

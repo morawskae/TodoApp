@@ -10,5 +10,7 @@ namespace ToDoAPI.Repositories.Interfaces
 		Task AddAsync (ToDoItem item);
 		Task UpdateAsync (ToDoItem item);
 		Task DeleteAsync(int id);
+
+		Task<IEnumerable<ToDoItem>> GetUserItems(int id);
 	}
 }
