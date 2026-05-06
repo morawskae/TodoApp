@@ -1,4 +1,4 @@
-﻿namespace ToDoAPI.DTOs
+﻿namespace ToDoAPI.DTOs.ItemDTO
 {
     public class UpdateTDItemDTO
     {
