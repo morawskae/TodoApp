@@ -18,7 +18,7 @@ namespace ToDoAPI.Services.Implementations
         {
             _config = config;
             _secretKey = _config["ApiSettings:Secret"];
-            _accessTokenExpiryMinute = _config.GetValue<int>("\"ApiSettings:AccessTokenExpiryMinutes",60);
+            _accessTokenExpiryMinute = _config.GetValue<int>("ApiSettings:AccessTokenExpiryMinutes",60);
         }
 
         public string GenerateToken(User user)
@@ -34,8 +34,8 @@ namespace ToDoAPI.Services.Implementations
             var _creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha256);
 
             var _token = new JwtSecurityToken(
-                issuer: _config[_secretKey],
-                audience: _config[_secretKey],
+                issuer: _config["ApiSettings:Issuer"],
+                audience: _config["ApiSettings:Audience"],
                 claims: _claims,
                 expires: DateTime.Now.AddMinutes(_accessTokenExpiryMinute),
                 signingCredentials: _creds
