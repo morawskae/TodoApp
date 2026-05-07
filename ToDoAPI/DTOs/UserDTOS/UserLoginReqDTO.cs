@@ -1,13 +1,13 @@
 ﻿namespace ToDoAPI.DTOs.UserDTOS
 {
-    public class CreateUserDTO
+    public class UserLoginReqDTO
     {
         public string Username { get; set; }
         public string Password { get; set; }
 
-        public CreateUserDTO() { }
+        public UserLoginReqDTO() { }
 
-        public CreateUserDTO(string username, string password)
+        public UserLoginReqDTO(string username, string password)
         {
             Username = username;
             Password = password;

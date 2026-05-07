@@ -1,4 +1,5 @@
-﻿using ToDoAPI.DTOs.UserDTOS;
+﻿using Microsoft.AspNetCore.Identity;
+using ToDoAPI.DTOs.UserDTOS;
 using ToDoAPI.Models;
 using ToDoAPI.Repositories.Interfaces;
 using ToDoAPI.Services.Interfaces;
@@ -9,10 +10,14 @@ namespace ToDoAPI.Services.Implementations
     {
 
         private readonly IUserRepository _repository;
+        private readonly TokenService _tokenService;
+        private readonly IPasswordHasher<User> _passHasher;
 
-        public UserService(IUserRepository repository)
+        public UserService(IUserRepository repository, TokenService tokenService ,IPasswordHasher<User> passHasher)
         {
             _repository = repository;
+            _tokenService = tokenService;
+            _passHasher = passHasher;
         }
 
         public async Task<List<GetUserDTO>> GetAllAsync()
@@ -42,8 +47,9 @@ namespace ToDoAPI.Services.Implementations
             var user = new User
             {
                 Username = dto.Username,
-                PasswordHash = dto.PasswordHash,
             };
+            var hasher = new PasswordHasher<User>();
+            user.PasswordHash = hasher.HashPassword(user, dto.Password);
 
             await _repository.AddUserAsync(user);
 
@@ -52,6 +58,39 @@ namespace ToDoAPI.Services.Implementations
         public async Task DeleteAsyncUser(int id)
         {
             await _repository.DeleteAsync(id);
+        }
+
+        public async Task<string> Login(UserLoginReqDTO dto)
+        {
+            var user = await _repository.GetUserByUsername(dto.Username);
+            if (user == null) return null;
+
+            var result = _passHasher.VerifyHashedPassword(
+                user,
+                user.PasswordHash, dto.Password
+                );
+            if(result ==PasswordVerificationResult.Failed) return null;
+            return _tokenService.GenerateToken(user);
+        }
+
+        public async Task<bool> UpdateOwnUser(int id, UpdateOwnUserDTO dto)
+        {
+            var user = await _repository.GetUserByID(id);
+            if (user is null) return false;
+
+            user.PasswordHash = _passHasher.HashPassword(user, dto.Password);
+            await _repository.UpdateAsync(user);
+            return true;
+        }
+
+        public async Task<bool> UpdateUserRole(int id, UpdateUserRoleDTO dto)
+        {
+            var user = await _repository.GetUserByID(id);
+            if (user is null) return false;
+
+            user.Role = dto.Role;
+            await _repository.UpdateAsync(user);
+            return true;
         }
     }
 }

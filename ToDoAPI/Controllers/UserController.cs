@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ToDoAPI.DTOs.UserDTOS;
 using ToDoAPI.Services.Implementations;
 using ToDoAPI.Services.Interfaces;
@@ -15,15 +16,18 @@ namespace ToDoAPI.Controllers
         {
             _service = service;
         }
-    
 
-    [HttpGet]
+
+        [Authorize(Roles ="Admin")]
+        [HttpGet]
         public async Task<IActionResult> GetAllUsers()
         {
             var users = await _service.GetAllAsync();
             return Ok(users);
 
         }
+
+        [Authorize(Roles = "Admin")]
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUserById(int id)
@@ -33,6 +37,7 @@ namespace ToDoAPI.Controllers
             return Ok(user);
         }
 
+        [Authorize(Roles = "Admin")]
 
         [HttpPost]
         public async Task<IActionResult> CreateUser(CreateUserDTO dto)
@@ -40,7 +45,7 @@ namespace ToDoAPI.Controllers
             await _service.CreateAsyncUser(dto);
             return Ok();
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {

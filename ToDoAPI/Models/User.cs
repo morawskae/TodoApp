@@ -7,6 +7,7 @@
         public string PasswordHash { get; set; }
         public DateTime CreationDate { get; set; }
 
+        public string Role { get; set; } = "User";
         public User() { }
 
         public User(string username, string passwordHash)
