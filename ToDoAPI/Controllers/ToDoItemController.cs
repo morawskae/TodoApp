@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using ToDoAPI.DTOs.ItemDTO;
 using ToDoAPI.DTOS;
 
@@ -35,17 +36,19 @@ namespace ToDoAPI.Controllers
 
         [Authorize(Roles ="User")]
         [HttpPost]
-        public async Task<IActionResult> AddItem(ToDoItemDTO dto)
+        public async Task<IActionResult> AddItem(CreateTDItemDTO dto)
         {
-            await _service.CreateAsync(dto);
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            await _service.CreateAsync(dto,userId);
             return Ok();
         }
-        [Authorize(Roles = "User")]
 
+        [Authorize(Roles = "User")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTask(int id, UpdateTDItemDTO dto)
         {
-            await _service.UpdateAsync(id, dto);
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            await _service.UpdateAsync(id, dto, userId);
             return Ok();
         }
         [Authorize(Roles = "User")]
@@ -53,13 +56,16 @@ namespace ToDoAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTask(int id)
         {
-            await _service.DeleteAsync(id);
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            await _service.DeleteAsync(id, userId);
             return Ok();
         }
         [Authorize(Roles = "User")]
-        [HttpGet("users/{userId}")]
-        public async Task<IActionResult> GetUserItems(int userId)
+        [HttpGet("my-items")]
+        public async Task<IActionResult> GetUserItems()
         {
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+
             var items = await _service.GetUsersItems(userId);
             return Ok(items);
         }

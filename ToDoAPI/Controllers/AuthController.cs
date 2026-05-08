@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.Data;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ToDoAPI.DTOs.UserDTOS;
@@ -21,13 +22,22 @@ namespace ToDoAPI.Controllers
 
         }
 
-
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] UserLoginReqDTO dto)
         {
             var token = await _service.Login(dto);
             if (string.IsNullOrEmpty(token)) return Unauthorized("Invalid credentials");
             return Ok(new { token });
+        }
+
+        [AllowAnonymous]
+        [HttpPost("register")]
+        public async Task<IActionResult> Register(CreateUserDTO dto)
+        {
+
+            await _service.CreateAsyncUser(dto);
+            return Ok();
         }
     }
 }

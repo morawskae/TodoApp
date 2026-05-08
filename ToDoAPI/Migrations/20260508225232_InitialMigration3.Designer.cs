@@ -11,14 +11,14 @@ using ToDoAPI;
 namespace ToDoAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260507234525_UserAuthorization")]
-    partial class UserAuthorization
+    [Migration("20260508225232_InitialMigration3")]
+    partial class InitialMigration3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "10.0.7");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.0");
 
             modelBuilder.Entity("ToDoAPI.Models.ToDoItem", b =>
                 {
@@ -37,6 +37,8 @@ namespace ToDoAPI.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("ToDoItems");
                 });
@@ -65,6 +67,17 @@ namespace ToDoAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("ToDoAPI.Models.ToDoItem", b =>
+                {
+                    b.HasOne("ToDoAPI.Models.User", "Owner")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Owner");
                 });
 #pragma warning restore 612, 618
         }
