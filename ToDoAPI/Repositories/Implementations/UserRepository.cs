@@ -49,5 +49,15 @@ namespace ToDoAPI.Repositories.Implementations
             }
         }
 
+        public async Task<User> GetUserByUsername(string username)
+        {
+            return await users.SingleOrDefaultAsync(u => u.Username == username);
+        }
+
+        public async Task UpdateUser(User user)
+        {
+            users.Update(user);
+            await _context.SaveChangesAsync();
+        }
     }
 }
