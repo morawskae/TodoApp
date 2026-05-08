@@ -5,13 +5,13 @@ namespace ToDoAPI.DTOS
 {
     public interface IToDoItemService
     {
-        Task<List<ToDoItemDTO>> GetAllAsync();
-        Task<ToDoItemDTO?> GetByIdAsync(int id);
-        Task CreateAsync(ToDoItemDTO dto);
-        Task UpdateAsync(int id, UpdateTDItemDTO dto);
-        Task DeleteAsync(int id);
+        Task<List<GetTDItemDTO>> GetAllAsync();
+        Task<GetTDItemDTO?> GetByIdAsync(int id);
+        Task CreateAsync(CreateTDItemDTO dto, int userId);
+        Task UpdateAsync(int id, UpdateTDItemDTO dto,int userId);
+        Task DeleteAsync(int id,int userId);
 
-        Task<List<ToDoItemDTO>> GetUsersItems(int userId);
+        Task<List<GetTDItemDTO>> GetUsersItems(int userId);
 
     }
 }

@@ -16,58 +16,64 @@ namespace ToDoAPI.Services.Implementations
             this._repository = repository;
         }
 
-        public async Task<List<ToDoItemDTO>> GetAllAsync()
+        public async Task<List<GetTDItemDTO>> GetAllAsync()
         {
             var items = await _repository.GetAllAsync();
-            return items.Select(p => new ToDoItemDTO {
-                UserId= p.UserId, Description = p.Description, IsFinished = p.IsFinished }).ToList();
+            return items.Select(p => new GetTDItemDTO {
+               Description = p.Description, IsFinished = p.IsFinished }).ToList();
         }
 
-        public async Task<ToDoItemDTO> GetByIdAsync(int id)
+        public async Task<GetTDItemDTO> GetByIdAsync(int id)
         {
             var item = await _repository.GetByIdAsync(id);
             if (item is null) return null;
-            return new ToDoItemDTO
+            return new GetTDItemDTO
             {
-                UserId = item.UserId,
                 Description = item.Description,
                 IsFinished = item.IsFinished,
 
             };
         }
-        public async Task CreateAsync(ToDoItemDTO dto)
+        public async Task CreateAsync(CreateTDItemDTO dto, int userId)
         {
             var item = new ToDoItem
             {
-                UserId = dto.UserId,
+                UserId = userId,
                 Description = dto.Description,
-                IsFinished = dto.IsFinished,
+                IsFinished = false
             };
 
             await _repository.AddAsync(item);
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id, int userId)
         {
+            var item = await _repository.GetByIdAsync(id);
+            if(item==null) return;
+
+            if (item.UserId != userId) throw new UnauthorizedAccessException();
+
             await _repository.DeleteAsync(id);
         }
 
-        public async Task UpdateAsync(int id, UpdateTDItemDTO dto)
+        public async Task UpdateAsync(int id, UpdateTDItemDTO dto, int userId)
         {
             var item = await _repository.GetByIdAsync(id);
             if(item is null) return;
+
+            if (item.UserId != userId) throw new UnauthorizedAccessException();
+
             item.Description = dto.Description;
             item.IsFinished = dto.IsFinished;
 
             await _repository.UpdateAsync(item);
         }
 
-        public async Task<List<ToDoItemDTO>> GetUsersItems(int userId)
+        public async Task<List<GetTDItemDTO>> GetUsersItems(int userId)
         {
            var items= await _repository.GetUserItems(userId);
-           return items.Select(p => new ToDoItemDTO
-            {
-                UserId = p.UserId,
+           return items.Select(p => new GetTDItemDTO
+           {
                 Description = p.Description,
                 IsFinished = p.IsFinished
             }).ToList();

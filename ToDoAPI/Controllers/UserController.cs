@@ -7,7 +7,7 @@ using ToDoAPI.Services.Interfaces;
 namespace ToDoAPI.Controllers
 {
 
-    [Controller]
+    [ApiController]
     [Route("api/users")]
     public class UserController : ControllerBase
     {

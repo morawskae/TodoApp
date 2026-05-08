@@ -5,7 +5,7 @@
 namespace ToDoAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class AddUpdateItemDTO : Migration
+    public partial class FixToDTO : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
