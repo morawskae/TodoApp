@@ -1,6 +1,7 @@
 
 import { useState} from 'react'
 import { createItem } from '../../services/api';
+import '../../styles/itemBar.css'
 interface Props {
 
     fetchItems: () => void;
@@ -25,7 +26,6 @@ interface Props {
     return (
         <>
             <form onSubmit={onSubmit }>
-                <h3> To-do List:</h3>
                 <input type="text" placeholder="add item to do..." value={newItem} onChange={(e)=>setNewItem(e.target.value) }></input>
                 <button type="submit"> Add item </button>
             </form>

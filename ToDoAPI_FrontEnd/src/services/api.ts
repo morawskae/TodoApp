@@ -1,7 +1,7 @@
 const API_URL = "http://localhost:5222/api"
 
 
-export async function login(username:string, password:string){
+export async function loginApi(username:string, password:string){
     const response = await fetch(`${API_URL}/Auth/login`, {
         method:'post',
         headers: {
