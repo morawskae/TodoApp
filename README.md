@@ -18,6 +18,5 @@ ASP.NET Core Web API project for managing tasks and to-do items.
 - Swagger
 - React
 - TypeScript
-- JavaScript
 - HTML
 - CSS
