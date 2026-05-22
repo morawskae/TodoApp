@@ -1,0 +1,33 @@
+import Item from '../mainPageComponents/Item';
+
+type ToDoItem = {
+    id: number;
+    description: string;
+};
+
+interface ItemListProps {
+    itemDescList: ToDoItem[];
+    onDeleteItem: (itemId: number) => void;
+}
+
+function ItemList({ itemDescList, onDeleteItem }: ItemListProps) {
+
+    return (
+        <div>
+
+            {itemDescList.map((item) => (
+
+                <Item
+                    key={item.id}
+                    itemId={item.id}
+                    taskDesc={item.description}
+                    onDeleteItem={onDeleteItem}
+                />
+
+            ))}
+
+        </div>
+    );
+}
+
+export default ItemList;
