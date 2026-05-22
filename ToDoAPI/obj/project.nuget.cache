@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "azkNrXc6AmE=",
+  "dgSpecHash": "Y416omJwdSs=",
   "success": true,
-  "projectFilePath": "C:\\Users\\emili\\Desktop\\SmallerProjects\\ToDoAPI\\ToDoAPI\\ToDoAPI.csproj",
+  "projectFilePath": "C:\\Users\\emili\\Desktop\\SmallerProjects\\AspNetTodoAPI\\ToDoAPI\\ToDoAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\emili\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\emili\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.0\\microsoft.aspnetcore.authentication.jwtbearer.8.0.0.nupkg.sha512",
@@ -65,10 +65,10 @@
     "C:\\Users\\emili\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
     "C:\\Users\\emili\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512",
     "C:\\Users\\emili\\.nuget\\packages\\system.threading.channels\\6.0.0\\system.threading.channels.6.0.0.nupkg.sha512",
-    "C:\\Users\\emili\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.26\\microsoft.windowsdesktop.app.ref.8.0.26.nupkg.sha512",
-    "C:\\Users\\emili\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.26\\microsoft.netcore.app.ref.8.0.26.nupkg.sha512",
-    "C:\\Users\\emili\\.nuget\\packages\\microsoft.netcore.app.host.win-arm64\\8.0.26\\microsoft.netcore.app.host.win-arm64.8.0.26.nupkg.sha512",
-    "C:\\Users\\emili\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.26\\microsoft.aspnetcore.app.ref.8.0.26.nupkg.sha512"
+    "C:\\Users\\emili\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.27\\microsoft.netcore.app.ref.8.0.27.nupkg.sha512",
+    "C:\\Users\\emili\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.27\\microsoft.windowsdesktop.app.ref.8.0.27.nupkg.sha512",
+    "C:\\Users\\emili\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.27\\microsoft.aspnetcore.app.ref.8.0.27.nupkg.sha512",
+    "C:\\Users\\emili\\.nuget\\packages\\microsoft.netcore.app.host.win-arm64\\8.0.27\\microsoft.netcore.app.host.win-arm64.8.0.27.nupkg.sha512"
   ],
   "logs": []
 }

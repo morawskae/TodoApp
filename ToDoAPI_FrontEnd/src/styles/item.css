@@ -1,0 +1,16 @@
+.item_div{
+    background-color:rgb(242, 246, 249);
+    margin:5px;
+    padding:5px;
+    border-radius:5px;
+    display:flex;
+    justify-content:space-between;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+    width:300px;
+}
+
+.taskDesc_p{
+    display:inline-block;
+    padding: 5px 10px;
+    margin:0;
+}

@@ -2,6 +2,8 @@
 {
     public class GetTDItemDTO
     {
+        public int Id { get; set; }
+
         public required string Description { get; set; }
         public bool IsFinished { get; set; }
 

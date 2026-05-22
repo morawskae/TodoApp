@@ -20,7 +20,9 @@ namespace ToDoAPI.Services.Implementations
         {
             var items = await _repository.GetAllAsync();
             return items.Select(p => new GetTDItemDTO {
-               Description = p.Description, IsFinished = p.IsFinished }).ToList();
+                Id = p.Id,
+               Description = p.Description, 
+               IsFinished = p.IsFinished }).ToList();
         }
 
         public async Task<GetTDItemDTO> GetByIdAsync(int id)
@@ -29,6 +31,7 @@ namespace ToDoAPI.Services.Implementations
             if (item is null) return null;
             return new GetTDItemDTO
             {
+                Id = item.Id,
                 Description = item.Description,
                 IsFinished = item.IsFinished,
 
@@ -74,6 +77,7 @@ namespace ToDoAPI.Services.Implementations
            var items= await _repository.GetUserItems(userId);
            return items.Select(p => new GetTDItemDTO
            {
+                Id = p.Id,
                 Description = p.Description,
                 IsFinished = p.IsFinished
             }).ToList();
