@@ -1,5 +1,5 @@
 import Item from '../mainPageComponents/Item';
-
+import '../../styles/itemList.css'
 type ToDoItem = {
     id: number;
     description: string;
@@ -13,7 +13,7 @@ interface ItemListProps {
 function ItemList({ itemDescList, onDeleteItem }: ItemListProps) {
 
     return (
-        <div>
+        <div className="itemList-div">
 
             {itemDescList.map((item) => (
 

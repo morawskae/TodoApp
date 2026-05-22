@@ -1,19 +1,21 @@
 import {useState} from "react";
 import {useNavigate} from "react-router-dom"
-import {login} from "../../services/api" ;
+import {loginApi} from "../../services/api" ;
+import { useAuth } from "../../context/AuthContext";
 function LoginForm() {
 
     const [username, setUsername]=useState("");
     const [password, setPassword]=useState("");
 
     const navigate = useNavigate();
+    const {login} = useAuth();
 
     async function handleSubmit(e:any){
         e.preventDefault();
 
         try{
-            const data = await login(username,password);
-            localStorage.setItem("token",data.token);
+            const data = await loginApi(username,password);
+            login(data.token);
             navigate("/todo");
         }
         catch(error){

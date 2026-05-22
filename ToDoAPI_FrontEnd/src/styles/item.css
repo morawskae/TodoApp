@@ -1,16 +1,40 @@
 .item_div{
-    background-color:rgb(242, 246, 249);
+    background-color: rgb(255, 255, 255);
     margin:5px;
+    margin-bottom: 10px;
     padding:5px;
     border-radius:5px;
-    display:flex;
-    justify-content:space-between;
-    box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
-    width:300px;
+    display:grid;
+    grid-template-columns: 70% 30%;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.086);
+    width: 95%;
+}
+
+.item_button_div{
+    display: flex;
+    align-items: center;
 }
 
 .taskDesc_p{
     display:inline-block;
     padding: 5px 10px;
     margin:0;
+}
+
+.item_div button{
+    white-space: nowrap;
+    padding:8px 10px;
+
+    background-color: #4a90e2;
+    color: white;
+    border-style: none;
+    border-radius: 5px;
+
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.item_div button:hover{
+    background-color: #357bd8;
 }

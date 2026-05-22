@@ -11,7 +11,9 @@ function Item({ taskDesc, onDeleteItem,itemId }: ItemProps) {
     return (
         <div className="item_div">
             <p className="taskDesc_p"> { taskDesc}</p>
-            <button className="delete_task_btn" onClick={()=>(onDeleteItem(itemId)) }> Delete Task </button>
+            <div className="item_button_div">
+                <button className="delete_task_btn" onClick={()=>(onDeleteItem(itemId)) }> Delete Task </button>
+            </div>
         </div>)
 }
 
