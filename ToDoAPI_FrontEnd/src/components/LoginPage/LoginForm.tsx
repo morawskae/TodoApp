@@ -10,6 +10,10 @@ function LoginForm() {
     const navigate = useNavigate();
     const {login} = useAuth();
 
+    const onRegisterHandle = ()=>{
+        navigate("/register");
+    }
+
     async function handleSubmit(e:any){
         e.preventDefault();
 
@@ -23,31 +27,40 @@ function LoginForm() {
             alert("Login failed");
         }
     }
-    return (
-        <div className="login-container">
-            <form className="login-form" onSubmit={handleSubmit}>
-                <h2>Login</h2>
+return (
+    <div className="container">
+        <form className="form" onSubmit={handleSubmit}>
+            <h2>Login</h2>
 
-                <input
-                    type="text"
-                    placeholder="Enter your username"
-                    value = {username}
-                    onChange={(e)=>setUsername(e.target.value)}
-                />
+            <input
+                type="text"
+                placeholder="Enter your username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+            />
 
-                <input
-                    type="password"
-                    placeholder="Enter your password"
-                    value = {password}
-                    onChange={(e)=>setPassword(e.target.value)}
-                />
+            <input
+                type="password"
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+            />
 
-                <button type="submit">
-                    Log in
-                </button>
-            </form>
-        </div>
-    );
-}
+            <button type="submit">
+                Log in
+            </button>
+
+            <p className="divider">or</p>
+
+            <button
+                type="button"
+                className="register-btn"
+                onClick={onRegisterHandle}
+            >
+                Register
+            </button>
+        </form>
+    </div>
+);}
 
 export default LoginForm;

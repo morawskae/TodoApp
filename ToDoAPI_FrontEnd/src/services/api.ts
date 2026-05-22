@@ -20,6 +20,23 @@ export async function loginApi(username:string, password:string){
     return response.json();
 }
 
+export async function registerApi(username:string, password:string){
+    const response = await fetch (`${API_URL}/Auth/register`,{
+        method:'post',
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({
+            username:username,
+            password:password
+        }),
+    });
+
+    if(!response.ok){
+        throw new Error("User already exists");
+    }
+}
+
 export async function getMyItems(token:string){
     const response = await fetch(`${API_URL}/toDoItems/my-items`,{
         method: "GET",
