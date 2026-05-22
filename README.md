@@ -16,7 +16,8 @@ ASP.NET Core Web API project for managing tasks and to-do items.
 - Entity Framework Core
 - SQLite
 - Swagger
-- React JS
+- React
+- TypeScript
 - JavaScript
 - HTML
 - CSS
