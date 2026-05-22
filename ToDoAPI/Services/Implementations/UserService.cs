@@ -44,6 +44,11 @@ namespace ToDoAPI.Services.Implementations
         
         public async Task CreateAsyncUser(CreateUserDTO dto)
         {
+            var existingUser = await _repository.GetUserByUsername(dto.Username);
+            if (existingUser != null)
+            {
+                throw new Exception("Username already exists");
+            }
             var user = new User
             {
                 Username = dto.Username,

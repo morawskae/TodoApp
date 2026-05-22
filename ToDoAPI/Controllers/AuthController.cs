@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SQLitePCL;
 using ToDoAPI.DTOs.UserDTOS;
 using ToDoAPI.Services.Implementations;
 using ToDoAPI.Services.Interfaces;
@@ -35,9 +36,13 @@ namespace ToDoAPI.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register(CreateUserDTO dto)
         {
-
+            try{
             await _service.CreateAsyncUser(dto);
-            return Ok();
+            return Ok();}
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
