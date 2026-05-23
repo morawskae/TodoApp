@@ -1,9 +1,10 @@
 import Item from '../mainPageComponents/Item';
 import '../../styles/itemList.css'
 type ToDoItem = {
-    id: number;
-    description: string;
-};
+    id:number;
+    description:string;
+    isFinished:boolean;
+}
 
 interface ItemListProps {
     itemDescList: ToDoItem[];
@@ -22,6 +23,7 @@ function ItemList({ itemDescList, onDeleteItem }: ItemListProps) {
                     itemId={item.id}
                     taskDesc={item.description}
                     onDeleteItem={onDeleteItem}
+                    isFinished={item.isFinished}
                 />
 
             ))}

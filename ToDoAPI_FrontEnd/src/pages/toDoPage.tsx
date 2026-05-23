@@ -9,6 +9,7 @@ import { getMyItems, deleteItem } from "../services/api";
 type ToDoItem = {
     id:number;
     description:string;
+    isFinished:boolean;
 }
 function ToDoPage() {
 

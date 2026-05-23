@@ -51,8 +51,8 @@ namespace ToDoAPI.Controllers
             await _service.UpdateAsync(id, dto, userId);
             return Ok();
         }
-        [Authorize(Roles = "User")]
 
+        [Authorize(Roles = "User")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTask(int id)
         {
