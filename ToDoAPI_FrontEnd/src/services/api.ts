@@ -48,6 +48,7 @@ export async function getMyItems(token:string){
         throw new Error("Failed to fetch items");
     }
     return response.json();}
+
 export async function createItem(taskDesc:string, token:string){
         const response = await fetch(`${API_URL}/toDoItems`, {
         method: "POST",
@@ -65,7 +66,7 @@ export async function createItem(taskDesc:string, token:string){
         }
     }
 
-    export async function deleteItem(id: number, token: string) {
+export async function deleteItem(id: number, token: string) {
 
     const response = await fetch(`${API_URL}/toDoItems/${id}`, {
         method: "DELETE",
@@ -76,5 +77,23 @@ export async function createItem(taskDesc:string, token:string){
 
     if (!response.ok) {
         throw new Error("Failed to delete item");
+    }
+}
+
+export async function updateItem(id:number, token:string, description:string, isFinished:boolean){
+    const response = await fetch(`${API_URL}/toDoItems/${id}`,{
+        method:"PUT",
+        headers:{
+            "Content-Type":"application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            description: description,
+            isFinished: isFinished
+        }),
+    });
+
+    if(!response.ok){
+        throw new Error("Couldnt update task");
     }
 }

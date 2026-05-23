@@ -6,29 +6,27 @@
     border-radius:5px;
 
     display:grid;
-    grid-template-columns: 1fr auto;
+    gap:10px;
+    grid-template-columns: auto 1fr auto;
     align-items:center;
 
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.086);
+    width: 320px;
 
-    width: 95%;
 }
-.item_div{
-    display:grid;
-    grid-template-columns: 1fr auto;
-    align-items:center;
-}
-
 .taskDesc_p{
     margin:0;
     padding:5px 10px;
 
     overflow-wrap: break-word;
     word-break: break-word;
-
-    min-width: 0;
+    width: 95%;
 }
-.item_div button{
+
+.taskDesc_p-finished{
+    text-decoration: line-through;
+}
+.delete_task_btn{
     white-space: nowrap;
     padding:8px 10px;
 
@@ -42,6 +40,45 @@
     transition: background-color 0.2s ease;
 }
 
-.item_div button:hover{
-    background-color: #357bd8;
+.delete_task_btn:hover{
+    background-color:#357bd8;
+}
+
+.delete_task_btn_icon{
+    height: 15px;
+}
+
+.is_finished_button{
+    width:20px;
+    height:20px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background-color: white;
+    border-style: solid;
+    border-color: #357bd8;
+    border-radius:100%;
+}
+
+.is_finished_button-active{
+    width:20px;
+    height:20px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background-color:#357bd8;
+    border:solid 2px #357bd8;
+    border-radius:100%;
+
+    cursor:pointer;
+}
+
+.is_finished_button_img{
+    width:10px;
+    height:10px;
+    display:block;
 }
