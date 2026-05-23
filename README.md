@@ -6,6 +6,7 @@ ASP.NET Core Web API project for managing tasks and to-do items.
 
 - Create tasks
 - Delete tasks
+- Marked tasks as finished
 - RESTful API structure
 
 ## Tech Stack
