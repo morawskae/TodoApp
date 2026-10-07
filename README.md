@@ -13,6 +13,7 @@ TodoApp/
 ├── backend/
 │     └── README.md
 ├── frontend/
+├── screenshots/
 └── README.md
 ```
 
