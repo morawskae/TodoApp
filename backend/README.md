@@ -422,21 +422,3 @@ The frontend communicates with the ASP.NET Core Web API and provides the user in
 
 The backend can also be used independently through Swagger or another API client.
 
-## Future Improvements
-
-Possible improvements include:
-
-* Task categories
-* Task priorities
-* Due dates
-* Search and filtering
-* Pagination
-* Refresh tokens
-* Password hashing improvements
-* Email-based account verification
-* More comprehensive validation
-* Automated unit and integration tests
-* Docker support
-* PostgreSQL for production
-* Improved API error handling
-* Frontend improvements
